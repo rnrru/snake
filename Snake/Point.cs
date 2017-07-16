@@ -18,18 +18,46 @@ namespace Snake
             this.y = y;
             this.sym = sym;
         }
+
+        public Point(Point p)
+        {
+            x = p.x;
+            y = p.y;
+            sym = p.sym;
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
         }
 
-        public void Move(Point p, int dx, int dy)
+        public void Move(int offset, Direction direction)
         {
-            p.x = p.x + dx;
-            p.y = p.y + dy;
+            if(direction == Direction.RIGHT)
+            {
+                x = x + offset;
+            }
 
-            Draw();
+            if (direction == Direction.LEFT)
+            {
+                x = x - offset;
+            }
+
+            if (direction == Direction.UP)
+            {
+                y = y + offset;
+            }
+
+            if (direction == Direction.DOWN)
+            {
+                y = y - offset;
+            }
+        }
+
+        public override string ToString()
+        {
+            return x + "," + y + "," + sym;
         }
     }
 }
