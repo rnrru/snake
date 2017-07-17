@@ -46,12 +46,12 @@ namespace Snake
 
             if (direction == Direction.UP)
             {
-                y = y + offset;
+                y = y - offset;
             }
 
             if (direction == Direction.DOWN)
             {
-                y = y - offset;
+                y = y + offset;
             }
         }
 
@@ -64,6 +64,11 @@ namespace Snake
         {
             sym = ' ';
             Draw();
+        }
+
+        public bool IsHit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
         }
     }
 }
